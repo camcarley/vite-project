@@ -1,9 +1,22 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import { expect,describe,it, beforeEach } from "vitest";
-import { useCounter } from "../App";
+import App, { useCounter } from "../App";
+import { render, screen, userEvent } from "../utils/setup-tests";
+
+describe("Simple working test", () => {
+  it("the title is visible", () => {
+    const component = render(<App />);
+    expect(component).toBeTruthy();
+  });
+
+  it("should increment count on click", async () => {
+    render(<App />);
+    userEvent.click(screen.getByRole("button"));
+    expect(await screen.findByText("count is 1")).toBeTruthy();
+  });
+});
 
 describe("useCounter()", () => {
-
 
   it("inc() should increment counter", () => {
         const initVal:number = 0;
