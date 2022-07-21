@@ -12,6 +12,7 @@ The endgoal is to be a re-write of my class capstone project, in which I used a 
 - Package manager: pnpm
 - Styling: TailwindCSS
 - Framework: React + TS
+- Routing: react-router
 
 
 
