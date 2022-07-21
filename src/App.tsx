@@ -1,6 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import Home from './pages/Home/home'
+import ContactUs from './pages/ContactUs/contact-us'
+import UserSettings from './pages/UserSettings/user-settings'
+import UserPlants from './pages/UserPlants/user-plants'
+import UserLocations from './pages/UserLocations/user-locations'
+import { Route, Routes } from 'react-router-dom'
+import NotFound from './pages/NotFound/NotFound'
+import { useState } from 'react'
 
 export type CounterHookType = {
   count: number,
@@ -25,23 +31,16 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-          <img src={reactLogo} className="logo react" alt="React logo" />
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-          <button onClick={() => {inc()}}>
-            count is {count}
-          </button>
-          <p className='text-red-500'>
-            Edit <code>src/App.tsx</code> and save to test HMR
-          </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/settings" element={<UserSettings />} />
+        <Route path="/plants" element={<UserPlants />} />
+        <Route path="/locations" element={<UserLocations />} />
+        <Route path="*" element={<NotFound statusCode={1} />} />
+      </Routes>
     </div>
-  )
+  );
 }
 
 export default App
